@@ -1614,15 +1614,6 @@
             100% { background-position: 0% 50%; }
         }
 
-        .fields-content {
-            display: none;
-            animation: fadeIn 0.8s ease-out;
-        }
-
-        .fields-content.active {
-            display: block;
-        }
-
         @media (max-width: 768px) {
             .glass-square {
                 width: 280px;
@@ -1759,147 +1750,11 @@
     <!-- Fields Section with Glass Square -->
     <section id="fields" class="py-8 px-4">
         <div class="container mx-auto text-center">
-            <div class="glass-square" onclick="toggleFieldsContent()">
+            <div class="glass-square" onclick="window.location.href = 'rashte.html';">
                 <div class="neon-sweep"></div>
                 <i class="fas fa-graduation-cap text-6xl mb-4" style="color: #26A69A;"></i>
                 <h2 class="text-3xl font-bold text-white mb-2">رشته‌های فعال</h2>
                 <p class="text-sm opacity-70">برای مشاهده جزئیات کلیک کنید</p>
-            </div>
-
-            <div id="fields-content" class="fields-content">
-                <!-- Field 1: Web Development -->
-                <div class="field-card mb-1 tilt-card">
-                    <div class="flex items-center justify-between mb-6">
-                        <div class="flex items-center">
-                            <div class="logo-3d w-20 h-20 bg-white bg-opacity-20 rounded-full flex items-center justify-center ml-4">
-                                <i class="fas fa-code text-white text-3xl"></i>
-                            </div>
-                            <div>
-                                <h3 class="heading-secondary text-white">تولید‌کننده و توسعه‌دهنده پایگاه‌های اینترنتی</h3>
-                            </div>
-                        </div>
-                        <span class="bg-green-500 text-white px-6 py-3 rounded-full text-sm font-semibold shadow-lg">فعال</span>
-                    </div>
-                    
-                    <div class="grid lg:grid-cols-4 gap-6">
-                        <!-- استاندارد رشته -->
-                        <div>
-                            <h4 class="font-bold mb-4 text-lg">استاندارد رشته</h4>
-                            <a href="https://payait.com/Standards/104-560.pdf" target="_blank" rel="noopener noreferrer" class="course-link">
-                                <i class="fas fa-file-pdf ml-2"></i>
-                                استاندارد رشته
-                            </a>
-                        </div>
-                        
-                        <!-- دروس پایه ۱۰ -->
-                        <div>
-                            <h4 class="font-bold mb-4 text-lg">دروس پایه ۱۰</h4>
-                            <a href="http://chap.sch.ir/sites/default/files/lbooks/1403-1404/847/C310215.pdf" target="_blank" rel="noopener noreferrer" class="course-link">
-                                <i class="fas fa-file-pdf ml-2"></i>
-                                استفاده از مهارت شهروند الکترونیک
-                            </a>
-                            <a href="http://chap.sch.ir/sites/default/files/lbooks/1403-1404/847/C310183.pdf" target="_blank" rel="noopener noreferrer" class="course-link">
-                                <i class="fas fa-file-pdf ml-2"></i>
-                                کاربر رایانه
-                            </a>
-                            <a href="http://chap.sch.ir/sites/default/files/lbooks/97-98/741/001-320-C310184%20%26%20C311184.pdf" target="_blank" rel="noopener noreferrer" class="course-link">
-                                <i class="fas fa-file-pdf ml-2"></i>
-                                کاربر اتوماسیون اداری
-                            </a>
-                        </div>
-                        
-                        <!-- دروس پایه ۱۱ -->
-                        <div>
-                            <h4 class="font-bold mb-4 text-lg">دروس پایه ۱۱</h4>
-                            <a href="http://chap.sch.ir/books/13352" target="_blank" rel="noopener noreferrer" class="course-link">
-                                <i class="fas fa-file-pdf ml-2"></i>
-                                تولید کننده و توسعه دهنده پایگاه های اینترنتی 
-                            </a>
-                        </div>
-                        
-                        <!-- دروس پایه ۱۲ -->
-                        <div>
-                            <h4 class="font-bold mb-4 text-lg">دروس پایه ۱۲</h4>
-                            <a href="http://www.chap.sch.ir/sites/default/files/lbooks/1403-1404/146/C211288.pdf" target="_blank" rel="noopener noreferrer" class="course-link">
-                                <i class="fas fa-file-pdf ml-2"></i>
-                                توسعه دهنده صفحات وب با PHP و MySQL
-                            </a>
-                            <a href="http://chap.sch.ir/sites/default/files/lbooks/1401-1402/694/C312260.pdf" target="_blank" rel="noopener noreferrer" class="course-link">
-                                <i class="fas fa-file-pdf ml-2"></i>
-                                توسعه دهنده سیستم های مدیریت محتوا با WordPress
-                            </a>
-                            <a href="http://chap.sch.ir/sites/default/files/lbooks/1404-1405/598/C210291.pdf" target="_blank" rel="noopener noreferrer" class="course-link">
-                                <i class="fas fa-file-pdf ml-2"></i>
-                                تولید محتوای آموزشی الکترونیکی
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Field 2: E-Learning Content -->
-                <div class="field-card tilt-card">
-                    <div class="flex items-center justify-between mb-6">
-                        <div class="flex items-center">
-                            <div class="logo-3d w-20 h-20 bg-white bg-opacity-20 rounded-full flex items-center justify-center ml-4">
-                                <i class="fas fa-laptop text-white text-3xl"></i>
-                            </div>
-                            <div>
-                                <h3 class="heading-secondary text-white">تولید محتوای آموزشی الکترونیکی</h3>
-                            </div>
-                        </div>
-                        <span class="bg-green-500 text-white px-6 py-3 rounded-full text-sm font-semibold shadow-lg">فعال</span>
-                    </div>
-                    
-                    <div class="grid lg:grid-cols-4 gap-6">
-                        <!-- استاندارد رشته -->
-                        <div>
-                            <h4 class="font-bold mb-4 text-lg">استاندارد رشته</h4>
-                            <a href="https://payait.com/Standards/104-555.pdf" target="_blank" rel="noopener noreferrer" class="course-link">
-                                <i class="fas fa-file-pdf ml-2"></i>
-                                استاندارد رشته
-                            </a>
-                        </div>
-                        
-                        <!-- دروس پایه ۱۰ -->
-                        <div>
-                            <h4 class="font-bold mb-4 text-lg">دروس پایه ۱۰</h4>
-                            <a href="http://chap.sch.ir/sites/default/files/lbooks/1403-1404/847/C310215.pdf" target="_blank" rel="noopener noreferrer" class="course-link">
-                                <i class="fas fa-file-pdf ml-2"></i>
-                                استفاده از مهارت شهروند الکترونیک
-                            </a>
-                            <a href="http://chap.sch.ir/sites/default/files/lbooks/1403-1404/847/C310183.pdf" target="_blank" rel="noopener noreferrer" class="course-link">
-                                <i class="fas fa-file-pdf ml-2"></i>
-                                کاربر رایانه
-                            </a>
-                            <a href="http://chap.sch.ir/sites/default/files/lbooks/97-98/741/001-320-C310184%20%26%20C311184.pdf" target="_blank" rel="noopener noreferrer" class="course-link">
-                                <i class="fas fa-file-pdf ml-2"></i>
-                                کاربر اتوماسیون اداری
-                            </a>
-                        </div>
-                        
-                        <!-- دروس پایه ۱۱ -->
-                        <div>
-                            <h4 class="font-bold mb-4 text-lg">دروس پایه ۱۱</h4>
-                            <a href="http://chap.sch.ir/sites/default/files/lbooks/1401-1402/693/C311253_0.pdf" target="_blank" rel="noopener noreferrer" class="course-link">
-                                <i class="fas fa-file-pdf ml-2"></i>
-                                تولید کننده محتوای الکترونیکی عمومی
-                            </a>
-                        </div>
-                        
-                        <!-- دروس پایه ۱۲ -->
-                        <div>
-                            <h4 class="font-bold mb-4 text-lg">دروس پایه ۱۲</h4>
-                            <a href="http://www.chap.sch.ir/sites/default/files/lbooks/1403-1404/1265/C312271.pdf" target="_blank" rel="noopener noreferrer" class="course-link">
-                                <i class="fas fa-file-pdf ml-2"></i>
-                                کاربر گرافیکی محتوای آموزشی
-                            </a>
-                            <a href="http://www.chap.sch.ir/sites/default/files/lbooks/1401-1402/694/C312267.pdf" target="_blank" rel="noopener noreferrer" class="course-link">
-                                <i class="fas fa-file-pdf ml-2"></i>
-                                محتواساز آموزش الکترونیکی (جلد اول)
-                            </a>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -2923,7 +2778,7 @@
         }
 
         // ChatGPT Integration with OpenAI API
-        const OPENAI_API_KEY = 'sk-proj-4PbDvAt-tyXYXY8aAaHyTynx6FMEVEXVYJWB37EhCwIu5TUsrdohyv3Ezf25upC4-MkcxDp1fabNT3BlbkFJwlKgoD5bGPQVz7yUNC-aKJEd7g79lZf9ynfYqy8z-RXhferDrYKGpnGovF3UMNAY3tjmICtHwA';
+        const OPENAI_API_KEY = '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';
         const OPENAI_API_URL = 'https://api.openai.com/v1/chat/completions';
 
         // Serper.dev Search Integration
@@ -3170,12 +3025,116 @@
         function getFallbackResponse(userMessage) {
             const message = userMessage.toLowerCase();
             
-            const greetings = [
-                'سلام! 🌟 خوش آمدید به فن‌آموز زرین. چه سوالی داری؟',
-                'درود! 💎 آماده کمکم. بگو چی می‌خوای بدونی.',
-                'سلام و احوال! 🚀 درباره رشته‌ها، شغل یا AI بپرس.'
+            // Greeting responses - کوتاه و مستقیم
+            if (message.includes('سلام') || message.includes('درود') || message.includes('صبح بخیر') || message.includes('عصر بخیر') || message.includes('شب بخیر') || message.includes('hi') || message.includes('hello') || message.includes('hey')) {
+                const greetings = [
+                    'سلام! 🌟 خوش آمدید به فن‌آموز زرین. چه سوالی داری؟',
+                    'درود! 💎 آماده کمکم. بگو چی می‌خوای بدونی.',
+                    'سلام و احوال! 🚀 درباره رشته‌ها، شغل یا AI بپرس.'
+                ];
+                return greetings[Math.floor(Math.random() * greetings.length)];
+            }
+            
+            // About website/developer - کوتاه
+            if (message.includes('نویسنده') || message.includes('سازنده') || message.includes('طراح') || message.includes('رعنا') || message.includes('پرموزه')) {
+                return '👩‍💻 سایت توسط <strong>رعنا پرموزه</strong> طراحی شده. سرگروه: <strong>فاطمه معتمد</strong>.';
+            }
+            
+            // About Fatemeh Motamed - کوتاه
+            if (message.includes('فاطمه') || message.includes('معتمد') || message.includes('سرگروه')) {
+                return '<strong>فاطمه معتمد</strong>: سرگروه. تماس: ۰۹۳۷۲۵۶۵۹۹۴ | تلگرام: @cszarindasht | ایتا: @fatemeh_motamed';
+            }
+            
+            // Comprehensive AI questions - کوتاه و مفید
+            if (message.includes('هوش مصنوعی') || message.includes('ai') || message.includes('ابزار')) {
+                const aiResponses = [
+                    '🤖 ابزارهای AI: Midjourney (عکس)، Copilot (کد)، Jasper (محتوا). بخش AI سایت رو ببین.',
+                    '🚀 دسته‌ها: عکس‌سازی (DALL-E)، کد (Cursor)، محتوا (Canva)، زبان (Duolingo). چالش هفتگی داری!',
+                    '💎 AI در رشته‌ها: Copilot برای وب، Synthesia برای محتوا. تماس برای جزئیات.'
+                ];
+                return aiResponses[Math.floor(Math.random() * aiResponses.length)];
+            }
+            
+            // Course/Field questions - تمرکز روی موفقیت و درآمد
+            if (message.includes('رشته') || message.includes('دوره') || message.includes('کلاس')) {
+                return '🎓 رشته‌ها: وب (HTML/CSS/JS/PHP - درآمد ۸-۲۰م) | محتوا (Photoshop/Premiere - ۶-۱۵م).<br>برای موفقیت: پروژه عملی بساز، AI استفاده کن، پورتفولیو بساز. کدوم رشته؟';
+            }
+            
+            // Specific tool questions - کوتاه
+            if (message.includes('wordpress') || message.includes('وردپرس')) {
+                return 'WordPress: نصب + قالب + افزونه. درآمد فریلنس: ۵-۲۰م. تماس: ۰۹۳۷۲۵۶۵۹۹۴';
+            }
+            
+            if (message.includes('php') || message.includes('mysql')) {
+                return 'PHP/MySQL: پایگاه داده + امنیت. برای موفقیت: پروژه واقعی بساز. درآمد: ۱۰-۲۵م.';
+            }
+            
+            if (message.includes('html') || message.includes('css') || message.includes('javascript')) {
+                return 'HTML/CSS/JS: پایه وب. موفقیت: responsive طراحی کن + JS تعاملی. شغل: طراح وب (۸-۱۸م).';
+            }
+            
+            if (message.includes('adobe') || message.includes('photoshop') || message.includes('illustrator')) {
+                return 'Photoshop/Illustrator: ویرایش + وکتور. موفقیت: پروژه گرافیکی بساز. درآمد: ۷-۱۵م (طراح محتوا).';
+            }
+            
+            // School questions - کوتاه
+            if (message.includes('هنرستان') || message.includes('مدرسه')) {
+                return '🏫 ۴ هنرستان: زینب کبری (وب+محتوا)، والفجر (محتوا). تماس مدیر: ۰۷۱۵۳۷۲۴۸۹۵. برای ثبت نام: ۰۹۳۷۲۵۶۵۹۹۴';
+            }
+            
+            // Future and technology questions - تمرکز موفقیت
+            if (message.includes('آینده') || message.includes('فناوری') || message.includes('2025')) {
+                return '🚀 ۲۰۲۵: AI + وب موبایل. موفقیت: مهارت JS + AI یاد بگیر. درآمد: ۱۰-۳۰م. رشته وب ما ایده‌آله.';
+            }
+            
+            // Learning and education questions - کارهای لازم
+            if (message.includes('یادگیری') || message.includes('آموزش')) {
+                return '📚 موفقیت: روزانه ۲س تمرین، پروژه بساز، GitHub بگذار. منابع: ویدیوهای آپارات + کتاب سایت.';
+            }
+            
+            // Contact questions - کوتاه
+            if (message.includes('تماس') || message.includes('شماره')) {
+                return '📞 فاطمه معتمد: ۰۹۳۷۲۵۶۵۹۹۴ | @cszarindasht | @fatemeh_motamed';
+            }
+            
+            // Programming questions - درآمد و موفقیت
+            if (message.includes('برنامه نویسی') || message.includes('کد') || message.includes('وب')) {
+                return '💻 وب: HTML/JS/PHP. موفقیت: اپ ساده بساز. درآمد: ۸-۲۰م. شروع: منابع پایه ۱۰.';
+            }
+            
+            // Content creation questions
+            if (message.includes('محتوا') || message.includes('گرافیک')) {
+                return '🎨 محتوا: Photoshop + Premiere. موفقیت: ویدیو آموزشی بساز. درآمد: ۶-۱۵م.';
+            }
+            
+            // Thanks responses - کوتاه
+            if (message.includes('ممنون') || message.includes('مرسی')) {
+                return 'خواهش! 😊 سوال دیگه؟';
+            }
+            
+            // Job/Career questions - درآمد
+            if (message.includes('شغل') || message.includes('درآمد')) {
+                return '💰 وب: ۸-۲۰م | محتوا: ۶-۱۵م. موفقیت: پورتفولیو + فریلنس (پونیشا).';
+            }
+            
+            // Registration questions
+            if (message.includes('ثبت نام')) {
+                return '📝 ثبت نام: مدارک + مصاحبه. تماس: ۰۹۳۷۲۵۶۵۹۹۴';
+            }
+
+            // Ethics videos fallback
+            if (message.includes('اخلاق') || message.includes('فیلم')) {
+                return '📹 فیلم‌های اخلاق حرفه‌ای در بخش اخلاق سایت موجود است. برای مثال: <a href="#ethics">اینجا کلیک کنید</a>';
+            }
+            
+            // Default responses - کوتاه و دقیق
+            const defaultResponses = [
+                '🌟 بپرس درباره رشته/شغل/AI. آماده‌ام!',
+                '💡 موفقیت: تمرین روزانه + پروژه. جزئیات؟',
+                '🚀 فن‌آموز زرین: وب/محتوا. کدوم علاقه؟'
             ];
-            return greetings[Math.floor(Math.random() * greetings.length)];
+            
+            return defaultResponses[Math.floor(Math.random() * defaultResponses.length)];
         }
 
         function handleChatKeyPress(event) {
@@ -3187,7 +3146,13 @@
         // Registration form functions
         function toggleRegistrationForm() {
             const form = document.getElementById('registration-form');
-            form.style.display = form.style.display === 'none' ? 'block' : 'none';
+            const isVisible = form.style.display !== 'none';
+            
+            if (isVisible) {
+                form.style.display = 'none';
+            } else {
+                form.style.display = 'block';
+            }
         }
 
         function submitRegistration(event) {
@@ -3203,7 +3168,7 @@
                 `👤 نام: ${name}\n` +
                 `📧 ایمیل: ${email}\n` +
                 `💬 پیام: ${message || 'ندارد'}\n\n` +
-                `لطفاً راهنمایی کنید.`
+                `لطفاً راهنماییم کنید.`
             );
             
             // Send to WhatsApp
@@ -3223,21 +3188,17 @@
 
         // Contact functions
         function sendToWhatsApp() {
-            const message = encodeURIComponent('سلام! از طریق سایت فن‌آموز زرین با شما تماس می‌گیرم. لطفاً راهنمایی کنید.');
+            const message = encodeURIComponent('سلام! از طریق سایت فن‌آموز زرین با شما تماس می‌گیرم. لطفاً راهنماییم کنید.');
             window.open(`https://wa.me/989372565994?text=${message}`, '_blank', 'noopener,noreferrer');
         }
 
         function sendToTelegram() {
+            const message = encodeURIComponent('سلام! از طریق سایت فن‌آموز زرین با شما تماس می‌گیرم. لطفاً راهنماییم کنید.');
             window.open(`https://t.me/cszarindasht`, '_blank', 'noopener,noreferrer');
         }
 
         function sendToEita() {
             window.open('https://eitaa.com/fatemeh_motamed', '_blank', 'noopener,noreferrer');
-        }
-
-        function toggleFieldsContent() {
-            const content = document.getElementById('fields-content');
-            content.classList.toggle('active');
         }
     </script>
 </body>
