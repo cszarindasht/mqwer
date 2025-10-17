@@ -1,0 +1,1736 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اعضای گروه فن‌آموز زرین - استان فارس زرین‌دشت</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            box-sizing: border-box;
+            font-family: 'Vazirmatn', sans-serif;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        
+        :root {
+            --primary-color: #0288D1; /* آبی اصلی - هماهنگ با تم آموزشی */
+            --secondary-color: #F5F7FA; /* خاکستری روشن برای پس‌زمینه light */
+            --accent-color: #26A69A; /* سبز برای برجسته‌سازی - هماهنگ با آبی */
+            --text-primary: #212121; /* متن اصلی light */
+            --text-secondary: #546E7A; /* متن ثانویه light */
+            --text-primary-dark: #FFFFFF; /* متن اصلی dark */
+            --text-secondary-dark: #CFD8DC; /* متن ثانویه dark */
+            --glass-bg-light: rgba(2, 136, 209, 0.15); /* شیشه‌ای آبی روشن */
+            --glass-bg-dark: rgba(255, 255, 255, 0.2); /* شیشه‌ای سفید dark */
+            --glass-border-light: rgba(255, 255, 255, 0.3); /* حاشیه شیشه‌ای light */
+            --glass-border-dark: rgba(255, 255, 255, 0.2); /* حاشیه شیشه‌ای dark */
+            --shadow-light: rgba(0,0,0,0.1); /* سایه light */
+            --shadow-dark: rgba(0,0,0,0.3); /* سایه dark */
+            --blur-amount: 8px;
+            --footer-bg: #0277BD; /* فوتر آبی تیره */
+            
+            /* Legacy support for existing styles */
+            --primary-blue: var(--primary-color);
+            --secondary-gray: var(--secondary-color);
+            --accent-green: var(--accent-color);
+            --light-bg: var(--secondary-color);
+            --dark-bg: #37474F; /* پس‌زمینه dark - خاکستری تیره هماهنگ با آبی */
+            --text-dark: var(--text-primary);
+            --text-light: var(--text-primary-dark);
+            --text-secondary-light: var(--text-secondary);
+            --glass-light: var(--glass-bg-light);
+            --glass-dark: var(--glass-bg-dark);
+            --footer-dark: var(--footer-bg);
+        }
+
+        .light-mode {
+            background-color: var(--secondary-color);
+            color: var(--text-primary);
+        }
+
+        .light-mode .text-secondary {
+            color: var(--text-secondary);
+        }
+
+        .dark-mode {
+            background-color: var(--dark-bg);
+            color: var(--text-primary-dark);
+        }
+
+        .dark-mode .text-secondary {
+            color: var(--text-secondary-dark);
+        }
+
+        .glass-card {
+            background: var(--glass-bg-light);
+            backdrop-filter: blur(var(--blur-amount));
+            -webkit-backdrop-filter: blur(var(--blur-amount));
+            border: 1px solid var(--glass-border-light);
+            border-radius: 12px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 12px var(--shadow-light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dark-mode .glass-card {
+            background: var(--glass-bg-dark);
+            border: 1px solid var(--glass-border-dark);
+            box-shadow: 0 8px 32px var(--shadow-dark);
+        }
+
+        .glass-card:hover {
+            box-shadow: 0 12px 40px var(--shadow-light);
+        }
+
+        .dark-mode .glass-card:hover {
+            box-shadow: 0 12px 40px var(--shadow-dark);
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .glass-card:hover::before {
+            opacity: 1;
+        }
+
+        .hero-gradient {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-gradient::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: heroShimmer 8s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes heroShimmer {
+            0%, 100% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.1); }
+        }
+
+        .parallax-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 120%;
+            background: linear-gradient(45deg, rgba(0, 121, 107, 0.1), rgba(0, 31, 63, 0.1));
+            transform: translateZ(-1px) scale(1.1);
+            z-index: -1;
+        }
+
+        .logo-3d {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+
+        .logo-3d:hover {
+            transform: rotateY(15deg) rotateX(10deg) scale(1.2);
+        }
+
+        .logo-3d i {
+            transition: all 0.4s ease;
+            text-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+
+        .logo-3d:hover i {
+            transform: translateZ(20px);
+            text-shadow: 0 8px 16px rgba(0,0,0,0.4);
+        }
+
+        .logo-3d img {
+            transition: all 0.4s ease;
+            transform: translateZ(0);
+        }
+
+        .logo-3d:hover img {
+            transform: translateZ(50px) scale(1.2);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-color), #00695C);
+            color: white;
+            padding: 14px 28px;
+            border-radius: 10px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 14px;
+            box-shadow: 0 2px 8px rgba(38, 166, 154, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary:hover {
+            background: var(--secondary-color);
+            color: var(--text-primary);
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 4px 15px rgba(38, 166, 154, 0.25);
+        }
+
+        .btn-primary:active {
+            transform: translateY(-2px) scale(0.98);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, var(--primary-color), #01579B);
+            color: white;
+            padding: 14px 28px;
+            border-radius: 10px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            box-shadow: 0 2px 8px rgba(2, 136, 209, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-secondary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn-secondary:hover::before {
+            left: 100%;
+        }
+
+        .btn-secondary:hover {
+            background: var(--secondary-color);
+            color: var(--text-primary);
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 4px 15px rgba(2, 136, 209, 0.25);
+        }
+
+        .btn-secondary:active {
+            transform: translateY(-2px) scale(0.98);
+        }
+
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+
+        .theme-toggle {
+            position: fixed;
+            bottom: 24px;
+            left: 24px;
+            z-index: 1001;
+            background: var(--glass-bg-light);
+            backdrop-filter: blur(var(--blur-amount));
+            -webkit-backdrop-filter: blur(var(--blur-amount));
+            border: 1px solid var(--glass-border-light);
+            border-radius: 50%;
+            width: 56px;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 20px var(--shadow-light);
+        }
+
+        .dark-mode .theme-toggle {
+            background: var(--glass-bg-dark);
+            border: 1px solid var(--glass-border-dark);
+            box-shadow: 0 4px 20px var(--shadow-dark);
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1) rotate(180deg);
+            box-shadow: 0 8px 30px var(--shadow-light);
+        }
+
+        .dark-mode .theme-toggle:hover {
+            box-shadow: 0 8px 30px var(--shadow-dark);
+        }
+
+        .theme-toggle i {
+            font-size: 18px;
+            color: var(--primary-color);
+            transition: all 0.4s ease;
+        }
+
+        .dark-mode .theme-toggle i {
+            color: var(--accent-color);
+        }
+
+        .team-section {
+            background: linear-gradient(135deg, var(--secondary-color), #FFFFFF);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 1rem 0;
+        }
+
+        .dark-mode .team-section {
+            background: linear-gradient(135deg, #455A64, var(--dark-bg));
+        }
+
+        .floating-card {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            25% { transform: translateY(-10px) rotate(1deg); }
+            50% { transform: translateY(-5px) rotate(0deg); }
+            75% { transform: translateY(-15px) rotate(-1deg); }
+        }
+
+        .tilt-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+
+        .tilt-card:hover {
+            transform: translateY(-10px) rotateX(5deg) rotateY(5deg) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0, 31, 63, 0.3);
+        }
+
+        .dark-mode .tilt-card:hover {
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Chatbot Styles */
+        .chatbot-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .chatbot-toggle {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: var(--primary-blue);
+            color: white;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 8px 32px rgba(0, 34, 68, 0.3);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chatbot-toggle::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+            animation: pulse 2s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(0.8); opacity: 0; }
+            50% { transform: scale(1.2); opacity: 1; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        .animate-fade-in-delay-1 {
+            animation: fadeIn 0.8s ease-out 0.2s forwards;
+            opacity: 0;
+        }
+
+        .animate-fade-in-delay-2 {
+            animation: fadeIn 0.8s ease-out 0.4s forwards;
+            opacity: 0;
+        }
+
+        .animate-fade-in-delay-3 {
+            animation: fadeIn 0.8s ease-out 0.6s forwards;
+            opacity: 0;
+        }
+
+        .animate-fade-in-delay-4 {
+            animation: fadeIn 0.8s ease-out 0.8s forwards;
+            opacity: 0;
+        }
+
+        .animate-fade-in-delay-5 {
+            animation: fadeIn 0.8s ease-out 1s forwards;
+            opacity: 0;
+        }
+
+        .animate-fade-in-delay-6 {
+            animation: fadeIn 0.8s ease-out 1.2s forwards;
+            opacity: 0;
+        }
+
+        .chatbot-toggle:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 40px rgba(0, 34, 68, 0.5);
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-green));
+        }
+
+        .chatbot-toggle i {
+            z-index: 1;
+            position: relative;
+        }
+
+        .chatbot-window {
+            position: absolute;
+            bottom: 84px;
+            right: 0;
+            width: 320px;
+            height: 520px;
+            background: var(--glass-light);
+            backdrop-filter: blur(var(--blur-amount));
+            -webkit-backdrop-filter: blur(var(--blur-amount));
+            border: 1px solid var(--glass-border-light);
+            border-radius: 12px;
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: 0 20px 60px var(--shadow-light);
+            transform: scale(0.9) translateY(20px);
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1002;
+        }
+
+        @media (max-width: 768px) {
+            .chatbot-window {
+                position: fixed;
+                bottom: 0;
+                right: 0;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                border-radius: 0;
+                z-index: 9999;
+            }
+            
+            .chatbot-container {
+                bottom: 15px;
+                right: 15px;
+            }
+            
+            .chatbot-toggle {
+                width: 56px;
+                height: 56px;
+                font-size: 24px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .chatbot-window {
+                position: fixed;
+                bottom: 0;
+                right: 0;
+                left: 0;
+                top: 0;
+                width: 100vw;
+                height: 100vh;
+                border-radius: 0;
+                z-index: 9999;
+            }
+            
+            .chatbot-header {
+                padding: 20px 15px 15px 15px;
+                padding-top: max(20px, env(safe-area-inset-top));
+            }
+            
+            .chatbot-messages {
+                padding: 15px;
+                padding-bottom: max(15px, env(safe-area-inset-bottom));
+            }
+            
+            .chatbot-input-container {
+                padding: 15px;
+                padding-bottom: max(15px, env(safe-area-inset-bottom));
+            }
+            
+            .chatbot-contact-buttons {
+                padding: 15px;
+                padding-bottom: max(15px, env(safe-area-inset-bottom));
+            }
+            
+            .chatbot-container {
+                bottom: 12px;
+                right: 12px;
+            }
+            
+            .chatbot-toggle {
+                width: 52px;
+                height: 52px;
+                font-size: 22px;
+            }
+        }
+
+        .chatbot-window.hidden {
+            transform: scale(0.9) translateY(20px);
+            opacity: 0;
+            display: none;
+        }
+
+        .dark-mode .chatbot-window {
+            background: var(--glass-dark);
+            border: 1px solid var(--glass-border-dark);
+            box-shadow: 0 20px 60px var(--shadow-dark);
+        }
+
+        .chatbot-header {
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-green));
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .chatbot-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .chatbot-message {
+            max-width: 80%;
+            padding: 12px 16px;
+            border-radius: 18px;
+            word-wrap: break-word;
+        }
+
+        .chatbot-message.user {
+            background: var(--accent-green);
+            color: white;
+            align-self: flex-end;
+            margin-left: auto;
+        }
+
+        .chatbot-message.bot {
+            background: rgba(255, 255, 255, 0.8);
+            color: var(--text-dark);
+            align-self: flex-start;
+        }
+
+        .dark-mode .chatbot-message.bot {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-light);
+        }
+
+        .chatbot-input-container {
+            padding: 15px 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            gap: 10px;
+        }
+
+        .chatbot-input {
+            flex: 1;
+            padding: 12px 16px;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 25px;
+            background: var(--secondary-gray);
+            color: var(--text-dark);
+            outline: none;
+            font-family: 'Vazirmatn', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .dark-mode .chatbot-input {
+            background: #263238;
+            color: var(--text-light);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .chatbot-input:focus {
+            border-color: var(--accent-green);
+            box-shadow: 0 0 0 2px rgba(46, 125, 50, 0.2);
+        }
+
+        .chatbot-send {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: var(--accent-green);
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(46, 125, 50, 0.3);
+        }
+
+        .chatbot-send:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(46, 125, 50, 0.4);
+        }
+
+        .chatbot-send:active {
+            transform: scale(0.95);
+        }
+
+        .chatbot-window.active {
+            display: flex;
+        }
+
+        .chatbot-form input, .chatbot-form textarea {
+            width: 100%;
+            padding: 0.6rem;
+            margin: 0.5rem 0;
+            border: 1px solid var(--accent-color);
+            border-radius: 6px;
+            background-color: var(--secondary-color);
+            color: var(--text-primary);
+        }
+
+        body.dark-mode .chatbot-form input, body.dark-mode .chatbot-form textarea {
+            background-color: #455A64;
+            color: var(--text-primary-dark);
+        }
+
+        .chatbot-form button {
+            background-color: var(--accent-color);
+            color: var(--text-primary-dark);
+            padding: 0.6rem 1.2rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .chatbot-form button:hover {
+            background-color: var(--secondary-color);
+            color: var(--text-primary);
+        }
+
+        .typing-indicator {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            padding: 12px 16px;
+        }
+
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--accent-green);
+            animation: typing 1.4s infinite ease-in-out;
+        }
+
+        .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes typing {
+            0%, 60%, 100% { transform: translateY(0); }
+            30% { transform: translateY(-10px); }
+        }
+
+        /* Typography Classes */
+        .heading-primary {
+            font-size: 28px;
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--primary-blue);
+        }
+
+        .heading-secondary {
+            font-size: 18px;
+            font-weight: 600;
+            line-height: 1.3;
+            color: var(--primary-blue);
+        }
+
+        .text-body {
+            font-size: 12px;
+            font-weight: 400;
+            line-height: 1.5;
+        }
+
+        .dark-mode .heading-primary,
+        .dark-mode .heading-secondary {
+            color: var(--text-light);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .chatbot-window {
+                width: 320px;
+                height: 480px;
+            }
+
+            .heading-primary {
+                font-size: 24px;
+            }
+
+            .heading-secondary {
+                font-size: 16px;
+            }
+
+            .theme-toggle {
+                bottom: 16px;
+                left: 16px;
+                width: 48px;
+                height: 48px;
+            }
+
+            .theme-toggle i {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .heading-primary {
+                font-size: 20px;
+            }
+
+            .heading-secondary {
+                font-size: 14px;
+            }
+        }
+
+        /* Additional responsive styles */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 1.4rem;
+            }
+
+            .chatbot-window {
+                width: 90%;
+            }
+
+            nav.active {
+                display: block;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background-color: var(--primary-color);
+                padding: 1rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        /* Notification Bubble Styles */
+        .chatbot-notification {
+            position: fixed;
+            bottom: 100px;
+            right: 20px;
+            z-index: 1001;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: 16px 20px;
+            border-radius: 20px;
+            max-width: 280px;
+            box-shadow: 0 8px 32px rgba(2, 136, 209, 0.3);
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            font-size: 12px;
+            line-height: 1.4;
+            text-align: center;
+            position: relative;
+        }
+
+        .chatbot-notification::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            right: 20px;
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 10px solid var(--primary-color);
+        }
+
+        .chatbot-notification.show {
+            transform: translateY(0);
+            opacity: 1;
+            animation: bounceIn 0.6s ease-out;
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0.3) translateY(20px); opacity: 0; }
+            50% { transform: scale(1.05); }
+            70% { transform: scale(0.9) translateY(-5px); }
+            100% { transform: scale(1) translateY(0); opacity: 1; }
+        }
+
+        /* Unified title styles */
+        h2 {
+            font-size: 22px !important;
+            font-weight: 700 !important;
+            color: var(--primary-blue) !important;
+            text-align: center;
+            margin-bottom: 1rem !important;
+            white-space: nowrap;
+        }
+
+        .dark-mode h2 {
+            color: var(--text-primary-dark) !important;
+        }
+
+        /* بهبودهای رسپانسیو جدید */
+        @media (max-width: 1024px) {
+            .container {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+
+            .hero-gradient {
+                padding-top: 4rem;
+                padding-bottom: 4rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                font-size: 13px;
+            }
+
+            h2 {
+                font-size: 20px !important;
+            }
+
+            .hero-gradient {
+                padding-top: 3rem;
+                padding-bottom: 3rem;
+            }
+
+            .hero-gradient h2 {
+                font-size: 1.75rem !important;
+            }
+
+            .hero-gradient h3 {
+                font-size: 1.5rem !important;
+            }
+
+            .hero-gradient h4, .hero-gradient h5 {
+                font-size: 1.25rem !important;
+            }
+
+            .team-section {
+                padding: 1.5rem;
+            }
+
+            footer {
+                padding: 2rem 1rem;
+            }
+
+            .logo-text h1 {
+                font-size: 1.1rem;
+            }
+
+            .logo-text p {
+                font-size: 0.7rem;
+            }
+
+            .header {
+                margin: 0.5rem;
+            }
+
+            .hero-gradient {
+                margin: 0.5rem;
+                border-radius: 1rem;
+            }
+
+            .section {
+                margin: 0.5rem;
+                padding: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                font-size: 12px;
+            }
+
+            h2 {
+                font-size: 18px !important;
+            }
+
+            .hero-gradient h2 {
+                font-size: 1.5rem !important;
+            }
+
+            .hero-gradient h3 {
+                font-size: 1.25rem !important;
+            }
+
+            .hero-gradient h4, .hero-gradient h5 {
+                font-size: 1rem !important;
+            }
+
+            .team-section {
+                padding: 1rem;
+            }
+
+            footer {
+                padding: 1.5rem 0.5rem;
+            }
+
+            .logo-text {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .logo-3d.w-16.h-16 {
+                margin-left: 0;
+                margin-bottom: 0.5rem;
+            }
+
+            .btn-primary, .btn-secondary {
+                padding: 12px 20px;
+                font-size: 13px;
+            }
+        }
+
+        /* بهبود رسپانسیو برای هدر */
+        @media (max-width: 768px) {
+            .logo-text {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .logo-3d.w-16.h-16 {
+                margin-left: 0;
+                margin-bottom: 0.5rem;
+            }
+
+            .btn-primary, .btn-secondary {
+                padding: 12px 20px;
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+<body class="light-mode transition-all duration-300">
+    <!-- Theme Toggle -->
+    <div class="theme-toggle" onclick="toggleTheme()">
+        <i class="fas fa-moon text-xl" id="theme-icon"></i>
+    </div>
+
+    <!-- Header -->
+    <header class="sticky top-0 z-50 m-4" style="background: var(--primary-blue); border-radius: 20px; box-shadow: 0 8px 32px rgba(0, 31, 63, 0.3);">
+        <div class="dark-mode:bg-dark-bg transition-all duration-300" style="background: inherit; border-radius: inherit;">
+            <div class="container mx-auto px-6 py-4">
+                <div class="flex items-center justify-between">
+                    <!-- Logo -->
+                    <div class="flex items-center logo-text">
+                        <div class="logo-3d w-16 h-16 rounded-full flex items-center justify-center ml-4" 
+                             style="background: linear-gradient(135deg, var(--accent-green), #004D40); box-shadow: 0 8px 20px rgba(0, 121, 107, 0.4);">
+                            <img src="your-logo.png" alt="لوگو گروه کامپیوتر" class="w-14 h-14 object-contain" />
+                        </div>
+                        <div>
+                            <h1 class="text-xl font-bold text-white" style="font-family: 'Vazirmatn', sans-serif; font-weight: 700;"></h1>
+                            <p class="text-sm text-gray-200" style="font-family: 'Vazirmatn', sans-serif; font-weight: 300;">گروه کامپیوتر شهرستان زرین‌دشت</p>
+                            <p class="text-sm text-gray-200" style="font-family: 'Vazirmatn', sans-serif; font-weight: 300;">استان فارس </p>
+                        </div>
+                    </div>
+
+                    <!-- Desktop Navigation -->
+                    <nav class="hidden md:flex space-x-8 space-x-reverse">
+                        <a href="index.html#hero" class="text-white hover:text-accent-green transition-all duration-300 font-semibold" 
+                           style="font-family: 'Vazirmatn', sans-serif; color: white;" 
+                           onmouseover="this.style.color='var(--accent-green)'; this.style.textShadow='0 2px 8px rgba(0, 121, 107, 0.5)'" 
+                           onmouseout="this.style.color='white'; this.style.textShadow='none'" 
+                           onclick="document.getElementById('hero').scrollIntoView({behavior: 'smooth'})">خانه</a>
+                        <a href="index.html#fields" class="text-white hover:text-accent-green transition-all duration-300 font-semibold" 
+                           style="font-family: 'Vazirmatn', sans-serif; color: white;" 
+                           onmouseover="this.style.color='var(--accent-green)'; this.style.textShadow='0 2px 8px rgba(0, 121, 107, 0.5)'" 
+                           onmouseout="this.style.color='white'; this.style.textShadow='none'" 
+                           onclick="document.getElementById('fields').scrollIntoView({behavior: 'smooth'})">رشته‌ها</a>
+                        <a href="index.html#schools" class="text-white hover:text-accent-green transition-all duration-300 font-semibold" 
+                           style="font-family: 'Vazirmatn', sans-serif; color: white;" 
+                           onmouseover="this.style.color='var(--accent-green)'; this.style.textShadow='0 2px 8px rgba(0, 121, 107, 0.5)'" 
+                           onmouseout="this.style.color='white'; this.style.textShadow='none'" 
+                           onclick="document.getElementById('schools').scrollIntoView({behavior: 'smooth'})">هنرستان‌ها</a>
+                        <a href="index.html#reports" class="text-white hover:text-accent-green transition-all duration-300 font-semibold" 
+                           style="font-family: 'Vazirmatn', sans-serif; color: white;" 
+                           onmouseover="this.style.color='var(--accent-green)'; this.style.textShadow='0 2px 8px rgba(0, 121, 107, 0.5)'" 
+                           onmouseout="this.style.color='white'; this.style.textShadow='none'" 
+                           onclick="document.getElementById('reports').scrollIntoView({behavior: 'smooth'})">گزارش‌ها</a>
+                        <a href="index.html#team" class="text-white hover:text-accent-green transition-all duration-300 font-semibold" 
+                           style="font-family: 'Vazirmatn', sans-serif; color: white;" 
+                           onmouseover="this.style.color='var(--accent-green)'; this.style.textShadow='0 2px 8px rgba(0, 121, 107, 0.5)'" 
+                           onmouseout="this.style.color='white'; this.style.textShadow='none'" 
+                           onclick="document.getElementById('team').scrollIntoView({behavior: 'smooth'})">اعضای گروه</a>
+                        <a href="index.html#resources" class="text-white hover:text-accent-green transition-all duration-300 font-semibold" 
+                           style="font-family: 'Vazirmatn', sans-serif; color: white;" 
+                           onmouseover="this.style.color='var(--accent-green)'; this.style.textShadow='0 2px 8px rgba(0, 121, 107, 0.5)'" 
+                           onmouseout="this.style.color='white'; this.style.textShadow='none'" 
+                           onclick="document.getElementById('resources').scrollIntoView({behavior: 'smooth'})">منابع</a>
+                        <a href="herfei.html" class="text-white hover:text-accent-green transition-all duration-300 font-semibold" 
+                           style="font-family: 'Vazirmatn', sans-serif; color: white;" 
+                           onmouseover="this.style.color='var(--accent-green)'; this.style.textShadow='0 2px 8px rgba(0, 121, 107, 0.5)'" 
+                           onmouseout="this.style.color='white'; this.style.textShadow='none'">اخلاق حرفه‌ای</a>
+                        <a href="ai.html" class="text-white hover:text-accent-green transition-all duration-300 font-semibold" 
+                           style="font-family: 'Vazirmatn', sans-serif; color: white;" 
+                           onmouseover="this.style.color='var(--accent-green)'; this.style.textShadow='0 2px 8px rgba(0, 121, 107, 0.5)'" 
+                           onmouseout="this.style.color='white'; this.style.textShadow='none'">هوش مصنوعی</a>
+                    </nav>
+
+                    <!-- Mobile Menu Button -->
+                    <button class="md:hidden text-white text-2xl" onclick="toggleMobileMenu()">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="mobile-menu fixed top-0 right-0 w-64 h-full z-50 p-6 md:hidden" 
+                 style="background: var(--primary-blue); box-shadow: -8px 0 32px rgba(0, 31, 63, 0.3);">
+                <button class="absolute top-4 left-4 text-white text-2xl" onclick="toggleMobileMenu()">
+                    <i class="fas fa-times"></i>
+                </button>
+                <nav class="mt-12 space-y-6">
+                    <a href="index.html#hero" class="block text-white hover:text-accent-green transition-colors font-semibold" 
+                       style="font-family: 'Vazirmatn', sans-serif;" onclick="document.getElementById('hero').scrollIntoView({behavior: 'smooth'}); toggleMobileMenu()">خانه</a>
+                    <a href="index.html#fields" class="block text-white hover:text-accent-green transition-colors font-semibold" 
+                       style="font-family: 'Vazirmatn', sans-serif;" onclick="document.getElementById('fields').scrollIntoView({behavior: 'smooth'}); toggleMobileMenu()">رشته‌ها</a>
+                    <a href="index.html#schools" class="block text-white hover:text-accent-green transition-colors font-semibold" 
+                       style="font-family: 'Vazirmatn', sans-serif;" onclick="document.getElementById('schools').scrollIntoView({behavior: 'smooth'}); toggleMobileMenu()">هنرستان‌ها</a>
+                    <a href="index.html#reports" class="block text-white hover:text-accent-green transition-colors font-semibold" 
+                       style="font-family: 'Vazirmatn', sans-serif;" onclick="document.getElementById('reports').scrollIntoView({behavior: 'smooth'}); toggleMobileMenu()">گزارش‌ها</a>
+                    <a href="index.html#team" class="block text-white hover:text-accent-green transition-colors font-semibold" 
+                       style="font-family: 'Vazirmatn', sans-serif;" onclick="document.getElementById('team').scrollIntoView({behavior: 'smooth'}); toggleMobileMenu()">اعضای گروه</a>
+                    <a href="index.html#resources" class="block text-white hover:text-accent-green transition-colors font-semibold" 
+                       style="font-family: 'Vazirmatn', sans-serif;" onclick="document.getElementById('resources').scrollIntoView({behavior: 'smooth'}); toggleMobileMenu()">منابع</a>
+                    <a href="herfei.html" class="block text-white hover:text-accent-green transition-colors font-semibold" 
+                       style="font-family: 'Vazirmatn', sans-serif;" onclick="toggleMobileMenu()">اخلاق حرفه‌ای</a>
+                    <a href="ai.html" class="block text-white hover:text-accent-green transition-colors font-semibold" 
+                       style="font-family: 'Vazirmatn', sans-serif;" onclick="toggleMobileMenu()">هوش مصنوعی</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero-gradient text-white py-24 mx-4 rounded-3xl mb-4 relative">
+        <div class="parallax-bg"></div>
+        <div class="container mx-auto px-6 text-center relative z-10">
+            <h2 class="text-3xl md:text-5xl font-bold mb-6 animate-fade-in" style="color: white !important; text-align: center !important; display: block; margin-left: auto; margin-right: auto;">اعضای گروه فن‌آموز زرین</h2>
+            <h3 class="text-2xl md:text-3xl mb-4 animate-fade-in-delay-1">تیم حرفه‌ای برای آموزش برتر</h3>
+            <h4 class="text-xl md:text-2xl mb-8 animate-fade-in-delay-2">همکاری و موفقیت</h4>
+            
+            <!-- Large Logo with 3D Effect -->
+            <div class="logo-3d w-40 h-40 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto my-12 floating-card">
+                <img src="your-logo.png" alt="لوگو گروه کامپیوتر" class="w-36 h-36 object-contain" />
+            </div>
+            
+            <h5 class="text-xl md:text-2xl mb-8 animate-fade-in-delay-3"></h5>
+            
+            <p class="text-lg md:text-xl mb-8 max-w-4xl mx-auto leading-relaxed opacity-90 animate-fade-in-delay-4">
+                با افتخار اعضای تیم فن‌آموز زرین را معرفی می‌کنیم. این تیم متشکل از کارشناسان و هنرآموزان مجرب است که با تعهد به آموزش باکیفیت، آینده‌سازان فناوری را همراهی می‌کنند.
+            </p>
+        </div>
+    </section>
+
+    <!-- Team Members Section -->
+    <section id="team-members" class="py-8 px-4">
+        <div class="container mx-auto">
+            <div class="team-section">
+                <h2>اعضای گروه فن‌آموز زرین</h2>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- کارشناسان -->
+                    <div class="glass-card p-8">
+                        <div class="text-center mb-6">
+                            <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" 
+                                 style="background-color: var(--primary-blue);">
+                                <i class="fas fa-user-tie text-white text-2xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold" style="color: var(--primary-blue);">کارشناسان</h3>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="bg-white bg-opacity-50 p-3 rounded-lg border-r-4" 
+                                 style="border-color: var(--accent-green);">
+                                <p class="font-semibold">محمدامین ابراهیمی</p>
+                                <p class="text-sm opacity-70">کارشناس فنی حرفه‌ای و کاردانش</p>
+                            </div>
+                            <div class="bg-white bg-opacity-50 p-3 rounded-lg border-r-4" 
+                                 style="border-color: var(--accent-green);">
+                                <p class="font-semibold">حمید رضایی</p>
+                                <p class="text-sm opacity-70">کارشناس آموزش</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- هنرآموزان -->
+                    <div class="glass-card p-8">
+                        <div class="text-center mb-6">
+                            <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" 
+                                 style="background-color: var(--accent-green);">
+                                <i class="fas fa-chalkboard-teacher text-white text-2xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold" style="color: var(--primary-blue);">هنرآموزان</h3>
+                        </div>
+                        <div class="space-y-2 max-h-64 overflow-y-auto">
+                            <div class="bg-white bg-opacity-50 p-2 rounded-lg text-sm border-r-4" 
+                                 style="border-color: var(--accent-green);">شهره پورغلام</div>
+                            <div class="bg-white bg-opacity-50 p-2 rounded-lg text-sm border-r-4" 
+                                 style="border-color: var(--accent-green);">عبدالمحسن راستی</div>
+                            <div class="bg-white bg-opacity-50 p-2 rounded-lg text-sm border-r-4" 
+                                 style="border-color: var(--accent-green);">فاطمه معتمد</div>
+                            <div class="bg-white bg-opacity-50 p-2 rounded-lg text-sm border-r-4" 
+                                 style="border-color: var(--accent-green);">اسما گل نژاد</div>
+                            <div class="bg-white bg-opacity-50 p-2 rounded-lg text-sm border-r-4" 
+                                 style="border-color: var(--accent-green);">فاطمه رحمانی</div>
+                            <div class="bg-white bg-opacity-50 p-2 rounded-lg text-sm border-r-4" 
+                                 style="border-color: var(--accent-green);">زینت راستگو</div>
+                            <div class="bg-white bg-opacity-50 p-2 rounded-lg text-sm border-r-4" 
+                                 style="border-color: var(--accent-green);">فرج نظری</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 mx-4 rounded-xl mb-4" style="background: var(--footer-dark); box-shadow: 0 4px 12px rgba(0, 26, 51, 0.15);">
+        <div class="container mx-auto px-6 text-center">
+            <div class="flex justify-center items-center gap-4 mb-6">
+                <div class="w-16 h-16 rounded-full flex items-center justify-center bg-white/20">
+                    <img src="your-logo.png" alt="لوگو" class="w-14 h-14 object-contain" />
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold">فن‌آموز زرین</h3>
+                    <p class="text-sm">گروه کامپیوتر آموزش پرورش زرین‌دشت</p>
+                </div>
+            </div>
+            <p class="mb-4">
+                توسعه دهنده: فاطمه معتمد - رعنا پرموزه
+            </p>
+            <p class="text-sm opacity-80">
+                تمامی حقوق محفوظ است © 
+            </p>
+        </div>
+    </footer>
+
+    <!-- Chatbot -->
+    <div class="chatbot-container">
+        <!-- Notification Bubble -->
+        <div class="chatbot-notification" id="chatbot-notification" onclick="openChatbotWithNotification()">
+            سلام وقت بخیر! به وب‌سایت فن‌آموز زرین خوش آمدید. لطفاً اگر سوالی دارید روی من کلیک کنید.
+        </div>
+        
+        <button class="chatbot-toggle" onclick="toggleChatbot()">
+            <i class="fas fa-robot"></i>
+        </button>
+        
+        <div class="chatbot-window" id="chatbot-window">
+            <div class="chatbot-header">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center">
+                        <i class="fas fa-robot ml-2"></i>
+                        <span class="font-bold">دستیار هوشمند فن‌آموز زرین</span>
+                    </div>
+                    <button class="chatbot-close md:hidden text-white text-xl" onclick="toggleChatbot()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="chatbot-messages" id="chatbot-messages">
+                <div class="chatbot-message bot">
+                    سلام! به وبسایت فن‌آموز زرین خوش آمدید! 🌟<br><br>من دستیار هوشمند شما هستم و می‌تونم راجع به:<br>• رشته‌های کامپیوتر و کاردانش<br>• هنرستان‌ها و ثبت نام<br>• ابزارهای هوش مصنوعی<br>• فرصت‌های شغلی<br>• منابع آموزشی<br><br>کمکتون کنم! درباره چه موضوعی دوست دارید صحبت کنیم؟ 💬
+                </div>
+            </div>
+            
+            <div class="chatbot-input-container">
+                <input type="text" class="chatbot-input" id="chatbot-input" placeholder="پیام خود را بنویسید..." onkeypress="handleChatKeyPress(event)">
+                <button class="chatbot-send" onclick="sendMessage()">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+            
+            <!-- Registration Form -->
+            <div class="chatbot-registration-form" id="registration-form" style="padding: 15px 20px; border-top: 1px solid rgba(255,255,255,0.1); display: none;">
+                <h4 style="margin: 0 0 15px 0; color: var(--primary-blue); font-size: 14px; font-weight: 600;">فرم ثبت نام سریع</h4>
+                <form onsubmit="submitRegistration(event)" style="display: flex; flex-direction: column; gap: 10px;">
+                    <input type="text" id="reg-name" placeholder="نام و نام خانوادگی" required 
+                           style="padding: 10px 12px; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; background: var(--secondary-gray); color: var(--text-dark); font-family: 'Vazirmatn', sans-serif; font-size: 12px;">
+                    <input type="email" id="reg-email" placeholder="ایمیل" required 
+                           style="padding: 10px 12px; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; background: var(--secondary-gray); color: var(--text-dark); font-family: 'Vazirmatn', sans-serif; font-size: 12px;">
+                    <textarea id="reg-message" placeholder="پیام (اختیاری)" rows="2" 
+                              style="padding: 10px 12px; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; background: var(--secondary-gray); color: var(--text-dark); font-family: 'Vazirmatn', sans-serif; font-size: 12px; resize: none;"></textarea>
+                    <button type="submit" style="background: var(--accent-green); color: white; border: none; padding: 10px 16px; border-radius: 8px; cursor: pointer; font-size: 12px; font-weight: 600; transition: all 0.3s ease;">
+                        <i class="fas fa-paper-plane" style="margin-left: 5px;"></i>
+                        ارسال درخواست
+                    </button>
+                </form>
+            </div>
+
+            <div class="chatbot-contact-buttons" style="padding: 15px 20px; border-top: 1px solid rgba(255,255,255,0.1); display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;">
+                <button onclick="toggleRegistrationForm()" class="contact-btn" style="background: var(--accent-green); color: white; border: none; padding: 8px 12px; border-radius: 8px; cursor: pointer; font-size: 11px; display: flex; align-items: center; gap: 5px; transition: all 0.3s ease; box-shadow: 0 2px 6px rgba(46, 125, 50, 0.3);" onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 4px 12px rgba(46, 125, 50, 0.4)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 2px 6px rgba(46, 125, 50, 0.3)'">
+                    <i class="fas fa-user-plus"></i>
+                    ثبت نام
+                </button>
+                <button onclick="sendToWhatsApp()" class="contact-btn" style="background: #25D366; color: white; border: none; padding: 8px 12px; border-radius: 8px; cursor: pointer; font-size: 11px; display: flex; align-items: center; gap: 5px; transition: all 0.3s ease; box-shadow: 0 2px 6px rgba(37, 211, 102, 0.3);" onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 4px 12px rgba(37, 211, 102, 0.4)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 2px 6px rgba(37, 211, 102, 0.3)'">
+                    <i class="fab fa-whatsapp"></i>
+                    واتساپ
+                </button>
+                <button onclick="sendToTelegram()" class="contact-btn" style="background: #0088cc; color: white; border: none; padding: 8px 12px; border-radius: 8px; cursor: pointer; font-size: 11px; display: flex; align-items: center; gap: 5px; transition: all 0.3s ease; box-shadow: 0 2px 6px rgba(0, 136, 204, 0.3);" onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 4px 12px rgba(0, 136, 204, 0.4)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 2px 6px rgba(0, 136, 204, 0.3)'">
+                    <i class="fab fa-telegram"></i>
+                    تلگرام
+                </button>
+                <button onclick="sendToEita()" class="contact-btn" style="background: #ff6b35; color: white; border: none; padding: 8px 12px; border-radius: 8px; cursor: pointer; font-size: 11px; display: flex; align-items: center; gap: 5px; transition: all 0.3s ease; box-shadow: 0 2px 6px rgba(255, 107, 53, 0.3);" onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 4px 12px rgba(255, 107, 53, 0.4)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 2px 6px rgba(255, 107, 53, 0.3)'">
+                    <i class="fas fa-paper-plane"></i>
+                    ایتا
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Theme Toggle
+        function toggleTheme() {
+            const body = document.body;
+            const themeIcon = document.getElementById('theme-icon');
+            
+            if (body.classList.contains('light-mode')) {
+                body.classList.remove('light-mode');
+                body.classList.add('dark-mode');
+                themeIcon.className = 'fas fa-sun text-xl';
+            } else {
+                body.classList.remove('dark-mode');
+                body.classList.add('light-mode');
+                themeIcon.className = 'fas fa-moon text-xl';
+            }
+        }
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('active');
+        }
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuButton = event.target.closest('button');
+            
+            if (!mobileMenu.contains(event.target) && !menuButton) {
+                mobileMenu.classList.remove('active');
+            }
+        });
+
+        // ChatGPT Integration with OpenAI API
+        const OPENAI_API_KEY = 'sk-proj-4PbDvAt-tyXY8aAaHyTynx6FMEVEXVYJWB37EhCwIu5TUsrdohyv3Ezf25upC4-MkcxDp1fabNT3BlbkFJwlKgoD5bGPQVz7yUNC-aKJEd7g79lZf9ynf9ynf9ynfYqy8z-RXhferDrYKGpnGovF3UMNAY3tjmICtHwA';
+        const OPENAI_API_URL = 'https://api.openai.com/v1/chat/completions';
+
+        // Serper.dev Search Integration
+        const SERPER_API_KEY = '265ed0e5e94b5302932d5d565657e49a85f9cffe';
+        const SERPER_API_URL = 'https://google.serper.dev/search';
+
+        // Website context for AI
+        const WEBSITE_CONTEXT = `
+        شما دستیار هوشمند سایت فن‌آموز زرین هستید. اطلاعات کامل سایت:
+
+        🏫 هنرستان‌ها (4 هنرستان):
+        1. زینب کبری - مدیر: فاطمه بروانیا - تلفن: 07153724895
+           رشته‌ها: وب، محتوای الکترونیکی، خیاطی
+        2. والفجر - مدیر: زهرا پوررستمی - تلفن: 07153743578
+           رشته‌ها: محتوای الکترونیکی، حسابداری
+        3. شهید پاکیزه خو - مدیر: فاطمه تروال - تلفن: 09179334943
+           رشته‌ها: محتوای الکترونیکی
+        4. شهید باهنر - مدیر: عباس امیری - تلفن: 07153723007
+           رشته‌ها: وب
+
+        📚 رشته‌ها (2 رشته کاردانش):
+        1. تولید کننده و توسعه دهنده پایگاه‌های اینترنتی
+           - دروس: HTML5, CSS3, JavaScript, PHP, MySQL, WordPress
+           - حقوق: 8-20 میلیون تومان
+        2. تولید محتوای آموزشی الکترونیکی
+           - دروس: Adobe Suite, Captivate, طراحی آموزشی
+           - حقوق: 6-15 میلیون تومان
+
+        🤖 ابزارهای AI (50+ ابزار):
+        - عکس‌سازی: Midjourney, DALL-E, Stable Diffusion, Ideogram
+        - کدسازی: GitHub Copilot, Cursor, Claude Code, Bolt
+        - تولید محتوا: Jasper, Copy.ai, Canva Magic, Synthesia
+        - یادگیری زبان: Duolingo, Langua, Elsa Speak
+
+        👥 تیم:
+        - سرگروه: فاطمه معتمد
+        - کارشناسان: محمدامین ابراهیمی، حمید رضایی
+        - نویسنده سایت: رعنا پرموزه
+        - هنرآموزان: شهره پورغلام، عبدالمحسن راستی و دیگران
+
+        📞 تماس:
+        - خانم فاطمه معتمد: 09372565994
+        - تلگرام: @cszarindasht
+        - ایتا: @fatemeh_motamed
+
+        شما باید:
+        - پاسخ‌های دقیق و مرتبط بدهید
+        - زبان دوستانه و حرفه‌ای استفاده کنید
+        - اطلاعات کامل و کاربردی ارائه دهید
+        - در صورت نیاز به تماس هدایت کنید
+        `;
+
+        let chatbotOpen = false; // Start closed by default
+        let conversationHistory = [];
+        let questionCount = 0;
+
+        function toggleChatbot() {
+            const chatbotWindow = document.getElementById('chatbot-window');
+            chatbotOpen = !chatbotOpen;
+            
+            if (chatbotOpen) {
+                chatbotWindow.style.display = 'flex';
+                chatbotWindow.classList.remove('hidden');
+                // Trigger animation
+                setTimeout(() => {
+                    chatbotWindow.style.transform = 'scale(1) translateY(0)';
+                    chatbotWindow.style.opacity = '1';
+                }, 10);
+                
+                // Send welcome message if first time opening
+                if (conversationHistory.length === 0) {
+                    setTimeout(() => {
+                        addMessage('سلام! به وبسایت فن‌آموز زرین خوش آمدید! 🌟<br><br>من دستیار هوشمند شما هستم و می‌تونم راجع به:<br>• رشته‌های کامپیوتر و کاردانش<br>• هنرستان‌ها و ثبت نام<br>• ابزارهای هوش مصنوعی<br>• فرصت‌های شغلی<br>• منابع آموزشی<br><br>کمکتون کنم! درباره چه موضوعی دوست دارید صحبت کنیم؟ 💬');
+                    }, 800);
+                }
+            } else {
+                chatbotWindow.style.transform = 'scale(0.9) translateY(20px)';
+                chatbotWindow.style.opacity = '0';
+                chatbotWindow.classList.add('hidden');
+                setTimeout(() => {
+                    chatbotWindow.style.display = 'none';
+                }, 400);
+            }
+        }
+
+        // Function to open chatbot via notification
+        function openChatbotWithNotification() {
+            hideNotification();
+            toggleChatbot();
+        }
+
+        // Notification Logic
+        function showNotification() {
+            const notification = document.getElementById('chatbot-notification');
+            const lastShown = localStorage.getItem('chatbotNotificationShown');
+            const now = new Date().getTime();
+            const twelveHours = 12 * 60 * 60 * 1000; // 12 hours in milliseconds
+
+            if (!lastShown || (now - parseInt(lastShown)) > twelveHours) {
+                setTimeout(() => {
+                    notification.classList.add('show');
+                    localStorage.setItem('chatbotNotificationShown', now.toString());
+                }, 5000); // 5 seconds after page load
+            }
+        }
+
+        function hideNotification() {
+            const notification = document.getElementById('chatbot-notification');
+            notification.classList.remove('show');
+        }
+
+        // Call showNotification on page load
+        document.addEventListener('DOMContentLoaded', showNotification);
+
+        function addMessage(message, isUser = false) {
+            const messagesContainer = document.getElementById('chatbot-messages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `chatbot-message ${isUser ? 'user' : 'bot'}`;
+            messageDiv.innerHTML = message;
+            messagesContainer.appendChild(messageDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function showTypingIndicator() {
+            const messagesContainer = document.getElementById('chatbot-messages');
+            const typingDiv = document.createElement('div');
+            typingDiv.className = 'chatbot-message bot typing-indicator';
+            typingDiv.id = 'typing-indicator';
+            typingDiv.innerHTML = '<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';
+            messagesContainer.appendChild(typingDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function hideTypingIndicator() {
+            const typingIndicator = document.getElementById('typing-indicator');
+            if (typingIndicator) {
+                typingIndicator.remove();
+            }
+        }
+
+        // ChatGPT API Call
+        async function callOpenAIAPI(message) {
+            try {
+                const response = await fetch(OPENAI_API_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${OPENAI_API_KEY}`,
+                    },
+                    body: JSON.stringify({
+                        model: 'gpt-3.5-turbo',
+                        messages: [
+                            { role: 'system', content: WEBSITE_CONTEXT },
+                            { role: 'user', content: message }
+                        ],
+                        max_tokens: 500,
+                        temperature: 0.7,
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const data = await response.json();
+                return data.choices[0].message.content;
+            } catch (error) {
+                console.error('OpenAI API Error:', error);
+                throw error;
+            }
+        }
+
+        // Serper Search API Call
+        async function callSerperSearch(query) {
+            try {
+                const response = await fetch(SERPER_API_URL, {
+                    method: 'POST',
+                    headers: {
+                        'X-API-KEY': SERPER_API_KEY,
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ q: query })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const data = await response.json();
+                return data.organic ? data.organic.map(result => result.snippet).join('\n') : '';
+            } catch (error) {
+                console.error('Serper API Error:', error);
+                return '';
+            }
+        }
+
+        async function sendMessage() {
+            const input = document.getElementById('chatbot-input');
+            const message = input.value.trim();
+            
+            if (!message) return;
+            
+            addMessage(message, true);
+            input.value = '';
+            questionCount++;
+            
+            // Add to conversation history
+            conversationHistory.push({ role: 'user', message: message });
+            
+            showTypingIndicator();
+            
+            try {
+                // Check if search is needed (e.g., if message is about external info)
+                let searchResults = '';
+                if (message.includes('اخلاق حرفه‌ای') || message.includes('فیلم آموزشی')) {
+                    searchResults = await callSerperSearch('فیلم‌های آموزشی اخلاق حرفه‌ای در فناوری');
+                }
+
+                // Use ChatGPT
+                const prompt = `${WEBSITE_CONTEXT}\n\nسوال کاربر: ${message}\n\nنتایج جستجو (اگر مرتبط): ${searchResults}\n\nلطفاً پاسخ کاملی به فارسی بدهید که شامل اطلاعات دقیق از محتوای سایت باشد.`;
+                const response = await callOpenAIAPI(prompt);
+                
+                hideTypingIndicator();
+                addMessage(response);
+                conversationHistory.push({ role: 'assistant', message: response });
+                
+                // If user asks too many questions, suggest contact
+                if (questionCount >= 5) {
+                    setTimeout(() => {
+                        addMessage('برای اطلاعات تخصصی‌تر و راهنمایی کامل، پیشنهاد می‌کنم با <strong>خانم فاطمه معتمد</strong> تماس بگیرید:<br><br>📱 ۰۹۳۷۲۵۶۵۹۹۴<br>📱 تلگرام: @cszarindasht<br>📱 ایتا: @fatemeh_motamed<br><br>ایشون با کمال میل پاسخگوی تمام سوالاتتون خواهند بود! 😊');
+                    }, 2000);
+                    questionCount = 0; // Reset counter
+                }
+                
+            } catch (error) {
+                hideTypingIndicator();
+                // Fallback to local responses
+                const fallbackResponse = getFallbackResponse(message);
+                addMessage(fallbackResponse);
+                conversationHistory.push({ role: 'assistant', message: fallbackResponse });
+            }
+        }
+
+        function getFallbackResponse(userMessage) {
+            const message = userMessage.toLowerCase();
+            
+            // Greeting responses - کوتاه و مستقیم
+            if (message.includes('سلام') || message.includes('درود') || message.includes('صبح بخیر') || message.includes('عصر بخیر') || message.includes('شب بخیر') || message.includes('hi') || message.includes('hello') || message.includes('hey')) {
+                const greetings = [
+                    'سلام! 🌟 خوش آمدید به فن‌آموز زرین. چه سوالی داری؟',
+                    'درود! 💎 آماده کمکم. بگو چی می‌خوای بدونی.',
+                    'سلام و احوال! 🚀 درباره رشته‌ها، شغل یا AI بپرس.'
+                ];
+                return greetings[Math.floor(Math.random() * greetings.length)];
+            }
+            
+            // About website/developer - کوتاه
+            if (message.includes('نویسنده') || message.includes('سازنده') || message.includes('طراح') || message.includes('رعنا') || message.includes('پرموزه')) {
+                return '👩‍💻 سایت توسط <strong>رعنا پرموزه</strong> طراحی شده. سرگروه: <strong>فاطمه معتمد</strong>.';
+            }
+            
+            // About Fatemeh Motamed - کوتاه
+            if (message.includes('فاطمه') || message.includes('معتمد') || message.includes('سرگروه')) {
+                return '<strong>فاطمه معتمد</strong>: سرگروه. تماس: ۰۹۳۷۲۵۶۵۹۹۴ | تلگرام: @cszarindasht | ایتا: @fatemeh_motamed';
+            }
+            
+            // Comprehensive AI questions - کوتاه و مفید
+            if (message.includes('هوش مصنوعی') || message.includes('ai') || message.includes('ابزار')) {
+                const aiResponses = [
+                    '🤖 ابزارهای AI: Midjourney (عکس)، Copilot (کد)، Jasper (محتوا). بخش AI سایت رو ببین.',
+                    '🚀 دسته‌ها: عکس‌سازی (DALL-E)، کد (Cursor)، محتوا (Canva)، زبان (Duolingo). چالش هفتگی داری!',
+                    '💎 AI در رشته‌ها: Copilot برای وب، Synthesia برای محتوا. تماس برای جزئیات.'
+                ];
+                return aiResponses[Math.floor(Math.random() * aiResponses.length)];
+            }
+            
+            // Course/Field questions - تمرکز روی موفقیت و درآمد
+            if (message.includes('رشته') || message.includes('دوره') || message.includes('کلاس')) {
+                return '🎓 رشته‌ها: وب (HTML/CSS/JS/PHP - درآمد ۸-۲۰م) | محتوا (Photoshop/Premiere - ۶-۱۵م).<br>برای موفقیت: پروژه عملی بساز، AI استفاده کن، پورتفولیو بساز. کدوم رشته؟';
+            }
+            
+            // Specific tool questions - کوتاه
+            if (message.includes('wordpress') || message.includes('وردپرس')) {
+                return 'WordPress: نصب + قالب + افزونه. درآمد فریلنس: ۵-۲۰م. تماس: ۰۹۳۷۲۵۶۵۹۹۴';
+            }
+            
+            if (message.includes('php') || message.includes('mysql')) {
+                return 'PHP/MySQL: پایگاه داده + امنیت. برای موفقیت: پروژه واقعی بساز. درآمد: ۱۰-۲۵م.';
+            }
+            
+            if (message.includes('html') || message.includes('css') || message.includes('javascript')) {
+                return 'HTML/CSS/JS: پایه وب. موفقیت: responsive طراحی کن + JS تعاملی. شغل: طراح وب (۸-۱۸م).';
+            }
+            
+            if (message.includes('adobe') || message.includes('photoshop') || message.includes('illustrator')) {
+                return 'Photoshop/Illustrator: ویرایش + وکتور. موفقیت: پروژه گرافیکی بساز. درآمد: ۷-۱۵م.';
+            }
+            
+            // School questions - کوتاه
+            if (message.includes('هنرستان') || message.includes('مدرسه')) {
+                return '🏫 ۴ هنرستان: زینب کبری (وب+محتوا)، والفجر (محتوا). تماس مدیر: ۰۷۱۵۳۷۲۴۸۹۵. برای ثبت نام: ۰۹۳۷۲۵۶۵۹۹۴';
+            }
+            
+            // Future and technology questions - تمرکز موفقیت
+            if (message.includes('آینده') || message.includes('فناوری') || message.includes('2025')) {
+                return '🚀 ۲۰۲۵: AI + وب موبایل. موفقیت: مهارت JS + AI یاد بگیر. درآمد: ۱۰-۳۰م. رشته وب ما ایده‌آله.';
+            }
+            
+            // Learning and education questions - کارهای لازم
+            if (message.includes('یادگیری') || message.includes('آموزش')) {
+                return '📚 موفقیت: روزانه ۲س تمرین، پروژه بساز, GitHub بگذار. منابع: ویدیوهای آپارات + کتاب سایت.';
+            }
+            
+            // Contact questions - کوتاه
+            if (message.includes('تماس') || message.includes('شماره')) {
+                return '📞 فاطمه معتمد: ۰۹۳۷۲۵۶۵۹۹۴ | @cszarindasht | @fatemeh_motamed';
+            }
+            
+            // Programming questions - درآمد و موفقیت
+            if (message.includes('برنامه نویسی') || message.includes('کد') || message.includes('وب')) {
+                return '💻 وب: HTML/JS/PHP. موفقیت: اپ ساده بساز. درآمد: ۸-۲۰م. شروع: منابع پایه ۱۰.';
+            }
+            
+            // Content creation questions
+            if (message.includes('محتوا') || message.includes('گرافیک')) {
+                return '🎨 محتوا: Photoshop + Premiere. موفقیت: ویدیو آموزشی بساز. درآمد: ۶-۱۵م.';
+            }
+            
+            // Thanks responses - کوتاه
+            if (message.includes('ممنون') || message.includes('مرسی')) {
+                return 'خواهش! 😊 سوال دیگه؟';
+            }
+            
+            // Job/Career questions - درآمد
+            if (message.includes('شغل') || message.includes('درآمد')) {
+                return '💰 وب: ۸-۲۰م | محتوا: ۶-۱۵م. موفقیت: پورتفولیو + فریلنس (پونیشا).';
+            }
+            
+            // Registration questions
+            if (message.includes('ثبت نام')) {
+                return '📝 ثبت نام: مدارک + مصاحبه. تماس: ۰۹۳۷۲۵۶۵۹۹۴';
+            }
+
+            // Ethics videos fallback
+            if (message.includes('اخلاق') || message.includes('فیلم')) {
+                return '📹 فیلم‌های اخلاق حرفه‌ای در بخش اخلاق سایت موجود است. برای مثال: <a href="herfei.html">اینجا کلیک کنید</a>';
+            }
+            
+            // Default responses - کوتاه و دقیق
+            const defaultResponses = [
+                '🌟 بپرس درباره رشته/شغل/AI. آماده‌ام!',
+                '💡 موفقیت: تمرین روزانه + پروژه. جزئیات؟',
+                '🚀 فن‌آموز زرین: وب/محتوا. کدوم علاقه؟'
+            ];
+            
+            return defaultResponses[Math.floor(Math.random() * defaultResponses.length)];
+        }
+
+        function handleChatKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        }
+
+        // Registration form functions
+        function toggleRegistrationForm() {
+            const form = document.getElementById('registration-form');
+            const isVisible = form.style.display !== 'none';
+            
+            if (isVisible) {
+                form.style.display = 'none';
+            } else {
+                form.style.display = 'block';
+            }
+        }
+
+        function submitRegistration(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('reg-name').value;
+            const email = document.getElementById('reg-email').value;
+            const message = document.getElementById('reg-message').value;
+            
+            // Create WhatsApp message
+            const whatsappMessage = encodeURIComponent(
+                `🎓 درخواست ثبت نام - فن‌آموز زرین\n\n` +
+                `👤 نام: ${name}\n` +
+                `📧 ایمیل: ${email}\n` +
+                `💬 پیام: ${message || 'ندارد'}\n\n` +
+                `لطفاً راهنمایی کنید.`
+            );
+            
+            // Send to WhatsApp
+            window.open(`https://wa.me/989372565994?text=${whatsappMessage}`, '_blank', 'noopener,noreferrer');
+            
+            // Show success message
+            addMessage('✅ درخواست ثبت نام شما ارسال شد! <strong>خانم فاطمه معتمد</strong> به زودی با شما تماس خواهند گرفت.<br><br>📱 تلفن: ۰۹۳۷۲۵۶۵۹۹۴<br>📱 تلگرام: @cszarindasht<br>📱 ایتا: @fatemeh_motamed');
+            
+            // Clear form
+            document.getElementById('reg-name').value = '';
+            document.getElementById('reg-email').value = '';
+            document.getElementById('reg-message').value = '';
+            
+            // Hide form
+            toggleRegistrationForm();
+        }
+
+        // Contact functions
+        function sendToWhatsApp() {
+            const message = encodeURIComponent('سلام! از طریق سایت فن‌آموز زرین با شما تماس می‌گیرم. لطفاً راهنمایی کنید.');
+            window.open(`https://wa.me/989372565994?text=${message}`, '_blank', 'noopener,noreferrer');
+        }
+
+        function sendToTelegram() {
+            const message = encodeURIComponent('سلام! از طریق سایت فن‌آموز زرین با شما تماس می‌گیرم. لطفاً راهنمایی کنید.');
+            window.open(`https://t.me/cszarindasht`, '_blank', 'noopener,noreferrer');
+        }
+
+        function sendToEita() {
+            window.open('https://eitaa.com/fatemeh_motamed', '_blank', 'noopener,noreferrer');
+        }
+    </script>
+</body>
+</html>
